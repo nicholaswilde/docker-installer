@@ -5,7 +5,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 BIN_DIR="${DIR}/../bin"
 
 # Cleanup the bin dir
-rm ${BIN_DIR}/*
+rm -rf ${BIN_DIR}
+mkdir ${BIN_DIR}
 
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/jpillora/installer/releases/latest)
 
