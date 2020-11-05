@@ -9,27 +9,50 @@ RUN \
     wget \
     gzip
 
-from base as base_arm64
+FROM base as base_amd64
+ARG VERSION
+WORKDIR "/tmp"
+RUN \
+  echo "**** download installer ****" && \
+  wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_amd64.gz" && \
+  gzip -d /tmp/* && \
+  mv installer_${VERSION}_linux_amd64 installer && \
+  chmod +x installer
+
+FROM alpine as build_amd64
+COPY --from=base_amd64 /tmp/installer /installer
+
+#########################
+
+FROM base as base_arm64
 ARG VERSION
 WORKDIR "/tmp"
 RUN \
   echo "**** download installer ****" && \
   wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_arm64.gz" && \
-  gzip -d /tmp/* && mv installer_${VERSION}_linux_arm64 installer && chmod +x installer
+  gzip -d /tmp/* && \
+  mv installer_${VERSION}_linux_arm64 installer && \
+  chmod +x installer
 
 FROM alpine as build_arm64
 COPY --from=base_arm64 /tmp/installer /installer
 
-from base as base_arm
+#########################
+
+FROM base as base_arm
 ARG VERSION
 WORKDIR "/tmp"
 RUN \
   echo "**** download installer ****" && \
   wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_armv7.gz" && \
-  gzip -d /tmp/* && mv installer_${VERSION}_linux_armv7 installer && chmod +x installer
+  gzip -d /tmp/* && \
+  mv installer_${VERSION}_linux_armv7 installer && \
+  chmod +x installer
 
 FROM alpine as build_arm
 COPY --from=base_arm /tmp/installer /installer
+
+########################
 
 FROM build_${TARGETARCH}
 RUN \
@@ -38,4 +61,4 @@ RUN \
   apk add --no-cache \
     ca-certificates && \
     update-ca-certificates
-CMD /installer
+CMD ["./installer"]

@@ -42,12 +42,20 @@ push-all: Dockerfile
 	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile .
 
 ## rm		: Remove the container
-rm:
+rm: stop
 	docker rm $(CONTAINER_NAME)-$(CONTAINER_INSTANCE)
 
 ## run		: Run the Docker image
 run:
 	docker run --rm --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)
+
+## rund		: Run the Docker image in the background
+rund:
+	docker run -d --rm --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)
+
+## stop		: Stop the Docker container
+stop:
+	docker stop $(CONTAINER_NAME)-$(CONTAINER_INSTANCE)
 
 ## help		: Show help
 help: Makefile
