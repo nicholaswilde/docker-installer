@@ -35,11 +35,11 @@ push: Dockerfile
 
 ## push-latest	: PUsh the latest image
 push-latest: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):latest --build-arg VERSION=$(VERSION) -f Dockerfile --push .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):latest $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile --push .
 
 ## push-all	: Push all release platform images
 push-all: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile --push .
 
 ## rm		: Remove the container
 rm: stop
