@@ -1,0 +1,6 @@
+NS = nicholaswilde
+PORTS = -p 3000:3000
+ENV = -e USER="" -e GH_TOKEN=""
+PLATFORMS = --platform linux/arm64,linux/arm/v7
+PLATFORMS_ARM = --platform linux/arm64,linux/arm/v7
+VERSION = 0.2.7
