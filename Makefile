@@ -1,7 +1,7 @@
 include make_env
 
 NS ?= nicholaswilde
-VERSION ?= 0.2.7
+VERSION ?= 0.2.9
 
 IMAGE_NAME ?= installer
 CONTAINER_NAME ?= installer

@@ -1,7 +1,7 @@
 FROM --platform=$BUILDPLATFORM alpine:3.12.1 as base
 ARG TARGETARCH
 ARG BUILDPLATFORM
-ARG VERSION=0.2.7
+ARG VERSION=0.2.9
 RUN \
   echo "**** install packages ****" && \
   apk --update upgrade && \
