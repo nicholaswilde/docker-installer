@@ -1,4 +1,6 @@
 # installer
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/installer) ![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/installer) ![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-installer)
+
 A Docker image for [jpillora's](https://github.com/jpillora) [installer](https://github.com/jpillora/installer) web server.
 
 ## Requirements
