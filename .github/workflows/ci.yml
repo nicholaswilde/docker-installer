@@ -30,6 +30,7 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: nicholaswilde/installer
+          tag-sha: true
           tag-semver: |
             {{raw}}
       -
