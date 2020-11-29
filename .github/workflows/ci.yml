@@ -27,10 +27,13 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: name/app
+          tag-semver: |
+            {{version}}
+            {{major}}.{{minor}}
       -
         # Runs a single command using the runners shell
         name: Run a one-line script
-        run: echo ${{ steps.docker_meta.outputs.labels }}
+        run: echo ${{ steps.docker_meta.outputs.tags }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
