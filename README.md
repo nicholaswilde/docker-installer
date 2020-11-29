@@ -4,6 +4,7 @@
 [![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-installer)](./LICENSE)
 [![hadolint](https://github.com/nicholaswilde/docker-installer/workflows/hadolint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-installer/actions?query=workflow%3Ahadolint)
 [![yamllint](https://github.com/nicholaswilde/docker-installer/workflows/yamllint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-installer/actions?query=workflow%3Ayamllint)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnicholaswilde%2Fdocker-installer.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnicholaswilde%2Fdocker-installer?ref=badge_shield)
 
 A Docker image for [jpillora's](https://github.com/jpillora) [installer](https://github.com/jpillora/installer) web server.
 
@@ -54,3 +55,7 @@ If you are having trouble building arm images on a x86 machine, see [this blog p
 ```
 $ make build
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnicholaswilde%2Fdocker-installer.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnicholaswilde%2Fdocker-installer?ref=badge_large)
