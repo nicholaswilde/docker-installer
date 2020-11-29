@@ -66,5 +66,5 @@ jobs:
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           push: false
           tags: |
-            user/app:latest
-            user/app:2.9.0
+            nicholaswilde/installer:latest
+            nicholaswilde/installer:2.9.0
