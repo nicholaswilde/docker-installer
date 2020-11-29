@@ -1,6 +1,7 @@
 # installer
 [![Docker Image Version (latest by date)](https://img.shields.io/docker/v/nicholaswilde/installer)](https://hub.docker.com/r/nicholaswilde/installer)
-[![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/installer) ![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-installer)](https://hub.docker.com/r/nicholaswilde/installer)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nicholaswilde/installer)](https://hub.docker.com/r/nicholaswilde/installer)
+[![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-installer)](./LICENSE)
 [![YAML Lint](https://github.com/nicholaswilde/docker-installer/workflows/YAML%20Lint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-installer/actions?query=workflow%3A%22YAML+Lint%22)
 
 A Docker image for [jpillora's](https://github.com/jpillora) [installer](https://github.com/jpillora/installer) web server.
