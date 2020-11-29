@@ -52,6 +52,6 @@ jobs:
           push: false
           tags: |
             nicholaswilde/installer:latest
-            nicholaswilde/installer:2.9.0
+            nicholaswilde/installer:${{ github.event.inputs.version }}
             ghcr.io/nicholaswilde/installer:latest
-            ghcr.io/nicholaswilde/installer:2.9.0
+            ghcr.io/nicholaswilde/installer:${{ github.event.inputs.version }}
