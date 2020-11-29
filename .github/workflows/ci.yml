@@ -35,7 +35,7 @@ jobs:
       -
         # Runs a single command using the runners shell
         name: Run a one-line script
-        run: echo ${{ steps.docker_meta.outputs.version }}
+        run: echo ${{ steps.docker_meta.outputs.tags }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
