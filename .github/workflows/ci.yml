@@ -1,10 +1,19 @@
 ---
-name: CI
+name: ci
 
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      version:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Version'
+        # Default value if no value is explicitly provided
+        default: '0.1.0'
+        # Input has to be provided for the workflow to run
+        required: true
 
 jobs:
   main:
@@ -13,19 +22,6 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Docker meta
-        id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: nicholaswilde/installer
-          tag-semver: |
-            {{version}}
-            {{major}}.{{minor}}
-      -
-        # Runs a single command using the runners shell
-        name: Run a one-line script
-        run: echo ${{ steps.docker_meta.outputs.tags }} && echo ${{ steps.docker_meta.outputs.labels }} 
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -57,3 +53,5 @@ jobs:
           tags: |
             nicholaswilde/installer:latest
             nicholaswilde/installer:2.9.0
+            ghcr.io/nicholaswilde/installer:latest
+            ghcr.io/nicholaswilde/installer:2.9.0
