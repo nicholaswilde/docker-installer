@@ -39,3 +39,17 @@ $ docker run -d \
 ```
 
 ## Build
+
+Check that you can build the following:
+```bash
+$ docker buildx ls
+NAME/NODE    DRIVER/ENDPOINT             STATUS  PLATFORMS
+mybuilder *  docker-container                    
+  mybuilder0 unix:///var/run/docker.sock running linux/amd64, linux/arm64, linux/arm/v7
+```
+
+If you are having trouble building arm images on a x86 machine, see [this blog post](https://www.docker.com/blog/getting-started-with-docker-for-arm-on-linux/).
+
+```
+$ make build
+```
