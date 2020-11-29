@@ -5,9 +5,9 @@ services:
     image: nicholaswilde/installer
     container_name: installer
     environment:
-      - USER=username   #optional
-      - GH_TOKEN=token  #optional
-      - PORT=3000       #optional
+      - USER=username   # optional
+      - GH_TOKEN=token  # optional
+      - PORT=3000       # optional
     ports:
       - 3000:3000
     restart: unless-stopped
