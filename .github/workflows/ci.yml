@@ -31,8 +31,7 @@ jobs:
         with:
           images: nicholaswilde/installer
           tag-semver: |
-            {{version}}
-            {{major}}.{{minor}}
+            {{raw}}
       -
         # Runs a single command using the runners shell
         name: Run a one-line script
