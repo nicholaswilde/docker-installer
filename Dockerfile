@@ -10,7 +10,7 @@ RUN \
 
 FROM base as base_amd64
 ARG VERSION
-WORKDIR "/tmp"
+WORKDIR /tmp
 RUN \
   echo "**** download installer ****" && \
   wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_amd64.gz" && \
@@ -25,7 +25,7 @@ COPY --from=base_amd64 /tmp/installer /installer
 
 FROM base as base_arm64
 ARG VERSION
-WORKDIR "/tmp"
+WORKDIR /tmp
 RUN \
   echo "**** download installer ****" && \
   wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_arm64.gz" && \
@@ -40,7 +40,7 @@ COPY --from=base_arm64 /tmp/installer /installer
 
 FROM base as base_arm
 ARG VERSION
-WORKDIR "/tmp"
+WORKDIR /tmp
 RUN \
   echo "**** download installer ****" && \
   wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_armv7.gz" && \
