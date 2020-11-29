@@ -14,8 +14,6 @@ on:
         default: 'World'
         # Input has to be provided for the workflow to run
         required: true
-        tags:
-          - 'v1.2.3'
 
 jobs:
   main:
@@ -36,7 +34,7 @@ jobs:
       -
         # Runs a single command using the runners shell
         name: Run a one-line script
-        run: echo ${{ steps.docker_meta.outputs.tags }}
+        run: echo ${{ steps.docker_meta.outputs.tags }} && echo ${{ steps.docker_meta.outputs.labels }} 
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
