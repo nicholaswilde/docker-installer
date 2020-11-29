@@ -1,5 +1,4 @@
-# This is a basic workflow that is manually triggered
-
+---
 name: hadolint
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
@@ -18,9 +17,14 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  - name: Hadolint Action
-    # You may pin to the exact commit or the version.
-    uses: brpaz/hadolint-action@v1.1.0
-    with:
-      # The path to the Dockerfile to lint
-      dockerfile: Dockerfile # optional, default is Dockerfile
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hadolint Action
+        # You may pin to the exact commit or the version.
+        uses: brpaz/hadolint-action@v1.1.0
+        with:
+          # The path to the Dockerfile to lint
+          dockerfile: Dockerfile # optional, default is Dockerfile
