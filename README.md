@@ -4,6 +4,7 @@
 [![GitHub](https://img.shields.io/github/license/nicholaswilde/docker-installer)](./LICENSE)
 [![hadolint](https://github.com/nicholaswilde/docker-installer/workflows/hadolint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-installer/actions?query=workflow%3Ahadolint)
 [![yamllint](https://github.com/nicholaswilde/docker-installer/workflows/yamllint/badge.svg?branch=main)](https://github.com/nicholaswilde/docker-installer/actions?query=workflow%3Ayamllint)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnicholaswilde%2Fdocker-installer.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnicholaswilde%2Fdocker-installer?ref=badge_shield)
 
 A Docker image for [jpillora's](https://github.com/jpillora) [installer](https://github.com/jpillora/installer) web server.
