@@ -56,3 +56,15 @@ If you are having trouble building arm images on a x86 machine, see [this blog p
 ```
 $ make build
 ```
+
+## Pre-commit hook
+
+If you want to automatically generate `README.md` files with a pre-commit hook, make sure you
+[install the pre-commit binary](https://pre-commit.com/#install), and add a [.pre-commit-config.yaml file](./.pre-commit-config.yaml)
+to your project. Then run:
+
+```bash
+pre-commit install
+pre-commit install-hooks
+```
+Currently, this only works on `arm64` systems.
