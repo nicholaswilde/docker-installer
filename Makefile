@@ -2,6 +2,7 @@ include make_env
 
 NS ?= nicholaswilde
 VERSION ?= 0.2.9
+LS ?= 1
 
 IMAGE_NAME ?= installer
 CONTAINER_NAME ?= installer
@@ -11,11 +12,11 @@ CONTAINER_INSTANCE ?= default
 
 ## all		: Build all platforms
 all: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile .
 
 ## build		: build the current platform (default)
 build: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) --build-arg VERSION=$(VERSION) -f Dockerfile .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS) --build-arg VERSION=$(VERSION) -f Dockerfile .
 
 ## build-latest	: Build the latest current platform
 build-latest: Dockerfile
@@ -23,15 +24,15 @@ build-latest: Dockerfile
 
 ## load		: Load the release image
 load: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) -f Dockerfile --load .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS) --build-arg VERSION=$(VERSION) -f Dockerfile --load .
 
 ## load-latest	: Load the latest image
 load-latest: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):latest -f Dockerfile --load .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):latest --build-arg VERSION=$(VERSION) -f Dockerfile --load .
 
 ## push		: Push the release image
 push: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) --build-arg VERSION=$(VERSION) -f Dockerfile --push .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS) --build-arg VERSION=$(VERSION) -f Dockerfile --push .
 
 ## push-latest	: PUsh the latest image
 push-latest: Dockerfile
@@ -39,7 +40,7 @@ push-latest: Dockerfile
 
 ## push-all	: Push all release platform images
 push-all: Dockerfile
-	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile --push .
+	docker buildx build -t $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS) $(PLATFORMS) --build-arg VERSION=$(VERSION) -f Dockerfile --push .
 
 ## rm		: Remove the container
 rm: stop
@@ -47,11 +48,11 @@ rm: stop
 
 ## run		: Run the Docker image
 run:
-	docker run --rm --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)
+	docker run --rm --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS)
 
 ## rund		: Run the Docker image in the background
 rund:
-	docker run -d --rm --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)
+	docker run -d --rm --name $(CONTAINER_NAME)-$(CONTAINER_INSTANCE) $(PORTS) $(ENV) $(NS)/$(IMAGE_NAME):$(VERSION)-ls$(LS)
 
 ## stop		: Stop the Docker container
 stop:

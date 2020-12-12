@@ -1,5 +1,6 @@
 VERSION = 0.2.9
 NS = nicholaswilde
+LS = 1
 
 # Run
 PORTS = -p 3000:3000
