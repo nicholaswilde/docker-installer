@@ -11,7 +11,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Version'
         # Default value if no value is explicitly provided
-        default: '0.1.0-ls1'
+        default: '0.2.9-ls1'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -49,7 +49,7 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
-          push: false
+          push: true
           tags: |
             nicholaswilde/installer:latest
             nicholaswilde/installer:${{ github.event.inputs.version }}
