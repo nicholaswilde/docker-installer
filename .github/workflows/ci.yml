@@ -67,7 +67,9 @@ jobs:
           build-args: |
             VERSION=0.2.9
           tags: |
-            nicholaswilde/installer:latest
             nicholaswilde/installer:${{ github.event.inputs.version }}
-            ghcr.io/nicholaswilde/installer:latest
+            nicholaswilde/installer:latest
             ghcr.io/nicholaswilde/installer:${{ github.event.inputs.version }}
+            ghcr.io/nicholaswilde/installer:latest
+            quay.io/nicholaswilde/installer:${{ github.event.inputs.version }}
+            quay.io/nicholaswilde/installer:latest
