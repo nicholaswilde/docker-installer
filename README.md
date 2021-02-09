@@ -50,3 +50,10 @@ pre-commit install
 pre-commit install-hooks
 ```
 Currently, this only works on `arm64` systems.
+
+## License
+
+[Apache 2.0 License](./LICENSE)
+
+## Author
+This project was started in 2020 by [Nicholas Wilde](https://github.com/nicholaswilde/).
