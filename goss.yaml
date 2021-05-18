@@ -1,0 +1,12 @@
+---
+port:
+  tcp6:3000:
+    listening: true
+
+process:
+  installer:
+    running: true
+
+http:
+  http://localhost:3000:
+    status: 200

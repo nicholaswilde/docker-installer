@@ -1,5 +1,5 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.13 as base
-ARG VERSION=0.2.9
+ARG VERSION
 WORKDIR /tmp
 COPY ./checksums.txt .
 RUN \
@@ -14,7 +14,7 @@ WORKDIR /tmp
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN \
   echo "**** download installer ****" && \
-  wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_amd64.gz" && \
+  wget -q "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_amd64.gz" && \
   sha256sum ./installer_${VERSION}_linux_amd64.gz | sha256sum --ignore-missing -c ./checksums.txt || if [ "$?" -eq "141" ]; then true; else exit $?; fi && \
   gzip -d /tmp/installer_${VERSION}_linux_amd64.gz && \
   mv installer_${VERSION}_linux_amd64 installer && \
@@ -31,7 +31,7 @@ WORKDIR /tmp
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN \
   echo "**** download installer ****" && \
-  wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_arm64.gz" && \
+  wget -q "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_arm64.gz" && \
   sha256sum ./installer_${VERSION}_linux_arm64.gz | sha256sum --ignore-missing -c ./checksums.txt || if [ "$?" -eq "141" ]; then true; else exit $?; fi && \
   gzip -d /tmp/installer_${VERSION}_linux_arm64.gz && \
   mv installer_${VERSION}_linux_arm64 installer && \
@@ -48,7 +48,7 @@ WORKDIR /tmp
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN \
   echo "**** download installer ****" && \
-  wget "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_armv7.gz" && \
+  wget -q "https://github.com/jpillora/installer/releases/download/v${VERSION}/installer_${VERSION}_linux_armv7.gz" && \
   sha256sum ./installer_${VERSION}_linux_armv7.gz | sha256sum --ignore-missing -c ./checksums.txt || if [ "$?" -eq "141" ]; then true; else exit $?; fi && \
   gzip -d /tmp/installer_${VERSION}_linux_armv7.gz && \
   mv installer_${VERSION}_linux_armv7 installer && \
@@ -63,13 +63,13 @@ COPY --from=base_arm /tmp/installer /installer
 FROM build_${TARGETARCH}
 ARG VERSION
 ARG BUILD_DATE
+# hadolint ignore=DL3048
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="nicholaswilde"
 RUN \
   echo "**** install packages ****" && \
   apk add --no-cache \
     ca-certificates=20191127-r5 && \
-    update-ca-certificates && \
   echo "**** cleanup ****" && \
   rm -rf /tmp/*
 CMD ["./installer"]
