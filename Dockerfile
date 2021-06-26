@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13 as base
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as base
 ARG VERSION
 WORKDIR /tmp
 COPY ./checksums.txt .
@@ -20,7 +20,7 @@ RUN \
   mv installer_${VERSION}_linux_amd64 installer && \
   chmod +x installer
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13 as build_amd64
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as build_amd64
 COPY --from=base_amd64 /tmp/installer /installer
 
 #########################
@@ -37,7 +37,7 @@ RUN \
   mv installer_${VERSION}_linux_arm64 installer && \
   chmod +x installer
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13 as build_arm64
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as build_arm64
 COPY --from=base_arm64 /tmp/installer /installer
 
 #########################
@@ -54,7 +54,7 @@ RUN \
   mv installer_${VERSION}_linux_armv7 installer && \
   chmod +x installer
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.13 as build_arm
+FROM ghcr.io/linuxserver/baseimage-alpine:3.14 as build_arm
 COPY --from=base_arm /tmp/installer /installer
 
 ########################
